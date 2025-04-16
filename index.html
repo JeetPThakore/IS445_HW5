@@ -3,27 +3,6 @@ layout: default
 title: Homework – Altair Visualization
 ---
 
-## Visualization 1: Interactive Dot Plot of Building Counts by County
-
-<iframe src="dot_plot.html" width="100%" height="800px" frameborder="0"></iframe>
-
-This dot plot visualizes the number of state-owned buildings in each Illinois county, with counties sorted by building count. Each dot represents a county, and its position along the x-axis indicates the total number of buildings. This format is chosen over a bar chart to better accommodate the large number of counties, improving readability and space utilization. The visualization is useful for identifying regions with higher concentrations of public infrastructure and supports tasks such as policy planning and resource allocation.
-
-**Design choices and encodings:**
-
-- The x-axis encodes the **number of buildings** (quantitative), while the y-axis lists **county names** (nominal), sorted by count.
-- Dots are rendered using Altair’s `mark_circle()` with a fixed size for visual impact.
-- Each county is assigned a unique color (no legend, to reduce clutter), and tooltips display the county name and building count.
-- Multi-selection interactivity is enabled, allowing users to highlight and compare specific counties directly in the plot.
-
-**Data transformations:**
-
-- Rows with missing or blank `County` values are filtered out to ensure accurate aggregation.
-- Building counts are computed by grouping the cleaned data by county.
-- The plot is saved as `dot_plot.html` for embedding.
-
----
-
 ## Visualization 2: Interactive Scatter Plot of Building Size vs. Year Built
 
 <iframe src="scatter_plot.html" width="100%" height="600px" frameborder="0"></iframe>
@@ -32,8 +11,9 @@ This scatter plot explores how the size of state-owned buildings (in square foot
 
 **Design choices and encodings:**
 
-- The x-axis encodes **Year Constructed** (quantitative, no zero baseline), and the y-axis encodes **Square Footage** (quantitative, no zero baseline).
-- Points are colored by county (legend omitted to reduce clutter; county shown in tooltips).
+- The x-axis encodes **Year Constructed** (quantitative, no zero baseline).
+- The y-axis encodes **Square Footage** (quantitative, no zero baseline).
+- Points are colored by **County** (legend omitted to reduce clutter; county is shown in tooltips).
 - Tooltips are formatted for clarity, showing building name, city, year, and size.
 - A dropdown selector allows users to filter by county or view all counties at once.
 - Pan and zoom interactivity (`.interactive()`) is enabled for detailed exploration.
