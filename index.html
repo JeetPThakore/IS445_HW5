@@ -1,42 +1,65 @@
 ---
 layout: default
-title: Homework – Altair Visualization
+title: IS445 Homework 5 - Building Visualizations
 ---
 
-## Visualization 2: Interactive Scatter Plot of Building Size vs. Year Built
+<div class="visualization">
+  <h2>Visualization 1: Interactive Building Distribution</h2>
+  <iframe src="dot_plot.html" width="100%" height="800px" frameborder="0"></iframe>
+  
+  <h3>Description</h3>
+  <p>This interactive dot plot compares the number of state-owned buildings across Illinois counties. Each circle represents a county, positioned by building count (x-axis) and sorted vertically for easy comparison.</p>
+  
+  <h3>Design Choices</h3>
+  <ul>
+    <li><strong>Encodings</strong>: Quantitative counts (x), nominal counties (y)</li>
+    <li><strong>Interactivity</strong>: Multi-select circles to highlight counties</li>
+    <li><strong>Color</strong>: Highlighted selections use categorical scheme</li>
+  </ul>
+  
+  <h3>Data Processing</h3>
+  <p>Filtered null counties and aggregated counts using Altair's <code>count()</code> transform.</p>
+</div>
 
-<iframe src="scatter_plot.html" width="100%" height="600px" frameborder="0"></iframe>
+<div class="visualization">
+  <h2>Visualization 2: Size vs. Year Analysis</h2>
+  <iframe src="scatter_plot.html" width="100%" height="600px" frameborder="0"></iframe>
+  
+  <h3>Description</h3>
+  <p>Scatter plot showing building square footage versus construction year, with county filtering to analyze regional trends.</p>
+  
+  <h3>Design Choices</h3>
+  <ul>
+    <li><strong>Encodings</strong>: Years (x), square footage (y), county (color)</li>
+    <li><strong>Interactivity</strong>: Dropdown filter + zoom/pan</li>
+    <li><strong>Scales</strong>: Non-zero baselines for proper trend visibility</li>
+  </ul>
+  
+  <h3>Data Processing</h3>
+  <p>Cleaned numeric fields and added "All" option to dropdown programmatically.</p>
+</div>
 
-This scatter plot explores how the size of state-owned buildings (in square footage) relates to their construction year. Each point represents a building, colored by county. The visualization helps reveal trends in building size over time and enables regional comparisons by filtering on county.
+<div class="resources">
+  <h2>Resources</h2>
+  <a href="https://raw.githubusercontent.com/UIUC-iSchool-DataViz/is445_data/main/building_inventory.csv" class="btn">The Dataset</a>
+  <a href="https://github.com/yourusername/yourrepo/blob/main/IS445-HW6-Jeet-Thakore.ipynb" class="btn">Analysis Notebook</a>
+</div>
 
-**Design choices and encodings:**
-
-- The x-axis encodes **Year Constructed** (quantitative, no zero baseline).
-- The y-axis encodes **Square Footage** (quantitative, no zero baseline).
-- Points are colored by **County** (legend omitted to reduce clutter; county is shown in tooltips).
-- Tooltips are formatted for clarity, showing building name, city, year, and size.
-- A dropdown selector allows users to filter by county or view all counties at once.
-- Pan and zoom interactivity (`.interactive()`) is enabled for detailed exploration.
-
-**Data transformations:**
-
-- Records with missing `Year Constructed` or `Square Footage` are dropped.
-- Both fields are explicitly converted to numeric types for compatibility.
-- An “All” option is added to the dropdown for comprehensive viewing.
-- The plot is saved as `scatter_plot.html` for embedding.
-
-**Interactivity:**
-
-- The dot plot supports multi-selection for comparing counties.
-- The scatter plot features a dropdown for county filtering and pan/zoom for detailed inspection.
-
----
-
-## Links
-
-- [Building Inventory Dataset](https://raw.githubusercontent.com/UIUC-iSchool-DataViz/is445_data/main/building_inventory.csv)
-- [Python Notebook](https://github.com/yourusername/yourrepo/blob/main/IS445-HW5-Jeet-Thakore.ipynb)
-
----
-
-*This page and its visualizations are based on the analysis and code in the linked Jupyter notebook, reflecting the specific design and data transformation choices implemented there.*
+<style>
+  .visualization {
+    margin-bottom: 3rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    background: #0366d6;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+</style>
